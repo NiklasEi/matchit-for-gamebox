@@ -44,10 +44,12 @@ public class MIGame extends BukkitRunnable {
     private int matched = 0, nrPairs;
     private boolean over = false;
     private me.nikl.matchit.MIGameRule rule;
+    private Boolean[] matchedFlag;
 
     public MIGame(MatchIt matchIt, Player player, boolean playSounds, MIGameRule rule) {
         this.rule = rule;
         this.gridSize = rule.getGridSize();
+        matchedFlag = new Boolean[gridSize.getSize()];
         this.playSounds = playSounds;
         this.player = player;
         this.matchIt = matchIt;
@@ -68,8 +70,10 @@ public class MIGame extends BukkitRunnable {
             startGame();
         }
         int slot = event.getSlot();
-        if (inventoryToGrid(slot) < 0) return;
-        if (!pairs.containsKey(inventoryToGrid(slot))) return;
+        int gridSlot = inventoryToGrid(slot);
+        if (gridSlot < 0) return;
+        if (!pairs.containsKey(gridSlot)) return;
+        if (matchedFlag[gridSlot]) return;
         if (firstOpen < 0) {
             playSound(click);
             show(slot);
@@ -79,11 +83,14 @@ public class MIGame extends BukkitRunnable {
         if (secondOpen < 0) {
             if (firstOpen == slot) return;
             show(slot);
-            if (pairs.get(inventoryToGrid(slot)).equals(pairs.get(inventoryToGrid(firstOpen)))) {
+            int firstOpenGridSlot = inventoryToGrid(firstOpen);
+            if (pairs.get(gridSlot).equals(pairs.get(firstOpenGridSlot))) {
+                matchedFlag[firstOpenGridSlot] = true;
+                matchedFlag[gridSlot] = true;
                 firstOpen = -1;
                 secondOpen = -1;
-                pairs.remove(inventoryToGrid(slot));
-                pairs.remove(inventoryToGrid(firstOpen));
+                pairs.remove(gridSlot);
+                pairs.remove(firstOpenGridSlot);
                 matched++;
                 if (matched == nrPairs) {
                     playSound(win);
@@ -157,6 +164,7 @@ public class MIGame extends BukkitRunnable {
 
         for (int i = 0; i < gridSize.getSize(); i++) {
             inventory.setItem(gridToInventory(i), cover);
+            matchedFlag[i] = false;
         }
     }
 
@@ -215,6 +223,8 @@ public class MIGame extends BukkitRunnable {
     @Override
     public void cancel() {
         if(!started) return;
+        inventory.clear();
+        over = true;
         super.cancel();
     }
 
@@ -227,6 +237,7 @@ public class MIGame extends BukkitRunnable {
 
     @Override
     public void run() {
+        if (over) return;
         if (secondOpen >= 0 && firstOpen >= 0) {
             if (secondMilli + (rule.getTimeVisible() * 1000) < System.currentTimeMillis()) {
                 hide(firstOpen, secondOpen);
