@@ -4,7 +4,7 @@ import me.nikl.gamebox.data.toplist.SaveType;
 import me.nikl.gamebox.game.rules.GameRuleRewards;
 
 /**
- * Created by nikl on 02.12.17.
+ * @author Niklas Eicker
  */
 public class MIGameRule extends GameRuleRewards {
     private double timeVisible;

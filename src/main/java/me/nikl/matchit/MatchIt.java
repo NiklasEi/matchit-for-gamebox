@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by nikl on 02.12.17.
+ * @author Niklas Eicker
  */
 public class MatchIt extends Game {
     private List<ItemStack> pairItems;

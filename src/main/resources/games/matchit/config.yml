@@ -20,7 +20,7 @@ economy:
 gameBox:
   mainButton:
     # define the Material and data for the button (format: 'material:data')
-    materialData: "stained_glass:11"
+    materialData: "BLUE_STAINED_GLASS"
     # display name of the button
     displayName: "&3Match It"
     # lore of the button
@@ -30,7 +30,7 @@ gameBox:
     - "&1Find all pairs."
   gameButtons:
     small:
-      materialData: "stained_glass:11"
+      materialData: "LIGHT_BLUE_STAINED_GLASS"
       displayName: "&aSmall game"
       lore:
       - ""
@@ -41,7 +41,7 @@ gameBox:
       # time in seconds until a mismatched pair is covered again (default 1.5)
       timeVisible: 1.5
     medium:
-      materialData: "stained_glass:11"
+      materialData: "BLUE_STAINED_GLASS"
       displayName: "&aMedium game"
       lore:
       - ""
@@ -50,7 +50,7 @@ gameBox:
       cost: 0
       size: "medium"
     big:
-      materialData: "stained_glass:11"
+      materialData: "ORANGE_STAINED_GLASS"
       displayName: "&aBig game"
       lore:
       - ""
@@ -67,7 +67,7 @@ gameBox:
     # use the same key as the game you want to display the top list for
     #   for that button 'saveStats' must be true (see above)
     big:
-      materialData: "stained_glass:13"
+      materialData: "BLUE_STAINED_GLASS"
       displayName: "&6Big game &c&lTop list"
       slot: 24
       # inventory title of the top list (%player% and %game%)
@@ -79,17 +79,17 @@ gameBox:
       - '&6Time:&1 %time%'
 
 coverItem:
-  materialData: "stained_glass_pane:3"
+  materialData: "LIGHT_BLUE_STAINED_GLASS_PANE"
   displayName: "&1Click to uncover"
 
 borderItem:
-  materialData: "stained_glass_pane:15"
+  materialData: "GRAY_STAINED_GLASS_PANE"
   displayName: ""
 
 items:
   '1':
     # material data of the item
-    materialData: "SMOOTH_BRICK:2"
+    materialData: "BRICK"
     # optional custom display name
     displayName: "&1Stone Bricks"
     # optional custom lore
@@ -98,17 +98,17 @@ items:
     - "Old and with many cracks"
   '2':
     # material data of the item
-    materialData: "HUGE_MUSHROOM_2"
+    materialData: "RED_MUSHROOM_BLOCK"
     # optional custom display name
     displayName: "&1Red Mushroom Block"
   '3':
     # material data of the item
-    materialData: "IRON_FENCE"
+    materialData: "IRON_BARS"
     # optional custom display name
     displayName: "&1Iron Bars"
   '4':
     # material data of the item
-    materialData: "melon_block"
+    materialData: "MELON"
     # optional custom display name
     displayName: "&1Melon"
   '5':
@@ -175,13 +175,13 @@ items:
     - ""
     - "I wonder where it leads to..."
   '15':
-    materialData: "wool:13"
+    materialData: "GREEN_WOOL"
     displayName: "&1Green wool"
   '16':
-    materialData: "wool:14"
+    materialData: "RED_WOOL"
     displayName: "&1Red wool"
   '17':
-    materialData: "RED_ROSE"
+    materialData: "POPPY"
     displayName: "&1Poppy"
     lore:
     - ""
@@ -212,22 +212,22 @@ items:
     materialData: "anvil"
     displayName: "&1An anvil"
   '23':
-    materialData: "WATER_LILY"
+    materialData: "LILY_PAD"
     displayName: "&1Lily Pad"
   '24':
-    materialData: "ENCHANTMENT_TABLE"
+    materialData: "ENCHANTING_TABLE"
     displayName: "&1Enchanting table"
     lore:
     - ""
     - "It's voodoo!"
   '25':
-    materialData: "double_plant"
+    materialData: "SUNFLOWER"
     displayName: "&1Sunflower"
   '26':
     materialData: "feather"
     displayName: "&1Feather"
   '27':
-    materialData: "GOLD_CHESTPLATE"
+    materialData: "GOLDEN_CHESTPLATE"
     displayName: "&1Golden Chestplate"
     lore:
     - ""

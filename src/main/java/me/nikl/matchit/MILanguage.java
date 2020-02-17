@@ -4,7 +4,7 @@ import me.nikl.gamebox.game.Game;
 import me.nikl.gamebox.game.GameLanguage;
 
 /**
- * Created by nikl on 02.12.17.
+ * @author Niklas Eicker
  */
 public class MILanguage extends GameLanguage {
 
