@@ -84,7 +84,7 @@ coverItem:
 
 borderItem:
   materialData: "GRAY_STAINED_GLASS_PANE"
-  displayName: ""
+  displayName: "&r"
 
 items:
   '1':

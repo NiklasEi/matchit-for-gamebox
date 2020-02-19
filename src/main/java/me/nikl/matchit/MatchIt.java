@@ -115,7 +115,7 @@ public class MatchIt extends Game {
             warn("    falling back to default...");
             border = ItemStackUtility.getItemStack("STAINED_GLASS_PANE:15");
             ItemMeta meta = border.getItemMeta();
-            meta.setDisplayName(StringUtility.color("&r"));
+            meta.setDisplayName("&r");
             border.setItemMeta(meta);
         }
     }

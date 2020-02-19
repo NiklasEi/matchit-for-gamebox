@@ -33,7 +33,7 @@ public class MIGame extends BukkitRunnable {
     private boolean started = false;
     private Map<Integer, Pair> pairs;
     private ItemStack cover, border;
-    private MatchIt.GridSize gridSize = MatchIt.GridSize.SMALL;
+    private MatchIt.GridSize gridSize;
     private boolean playSounds;
     private Sound click = Sound.CLICK;
     private Sound match = Sound.VILLAGER_YES;
@@ -45,6 +45,7 @@ public class MIGame extends BukkitRunnable {
     private boolean over = false;
     private me.nikl.matchit.MIGameRule rule;
     private Boolean[] matchedFlag;
+    private final int invSize = 54;
 
     public MIGame(MatchIt matchIt, Player player, boolean playSounds, MIGameRule rule) {
         this.rule = rule;
@@ -58,13 +59,14 @@ public class MIGame extends BukkitRunnable {
         this.cover = matchIt.getCover();
         this.border = matchIt.getBorder();
         nrPairs = gridSize.getSize() / 2;
-        this.inventory = matchIt.createInventory(54, language.INV_TITLE_START);
+        this.inventory = matchIt.createInventory(invSize, language.INV_TITLE_START);
         generateGame();
         player.openInventory(inventory);
     }
 
     public void onClick(InventoryClickEvent event) {
         if (over) return;
+        if(event.getClickedInventory().getSize() != invSize) return;
         if (!started) {
             started = true;
             startGame();
@@ -119,7 +121,8 @@ public class MIGame extends BukkitRunnable {
     }
 
     private void won() {
-        onGameEnd();
+        if (over) return;
+        this.cancel();
         matchIt.onGameWon(player, rule, time);
     }
 
@@ -223,7 +226,6 @@ public class MIGame extends BukkitRunnable {
     @Override
     public void cancel() {
         if(!started) return;
-        inventory.clear();
         over = true;
         super.cancel();
     }
