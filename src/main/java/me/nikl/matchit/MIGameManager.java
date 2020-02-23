@@ -60,7 +60,6 @@ public class MIGameManager implements GameManager {
                 new MIGame(matchIt, players[0]
                         , playSounds && matchIt.getSettings().isPlaySounds()
                         , rule));
-        return;
     }
 
     @Override

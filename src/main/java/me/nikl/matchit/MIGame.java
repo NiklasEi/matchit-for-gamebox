@@ -96,7 +96,6 @@ public class MIGame extends BukkitRunnable {
                 matched++;
                 if (matched == nrPairs) {
                     playSound(win);
-                    over = true;
                     nms.updateInventoryTitle(player, language.INV_TITLE_WON
                             .replace("%time%", StringUtility.formatTime(time)));
                     won();
@@ -122,6 +121,7 @@ public class MIGame extends BukkitRunnable {
 
     private void won() {
         if (over) return;
+        over = true;
         this.cancel();
         matchIt.onGameWon(player, rule, time);
     }
