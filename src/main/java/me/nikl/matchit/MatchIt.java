@@ -26,7 +26,7 @@ public class MatchIt extends Game {
     private ItemStack cover, border;
 
     public MatchIt(GameBox gameBox) {
-        super(gameBox, GameBox.MODULE_MATCHIT);
+        super(gameBox, MatchitModule.MATCHIT);
     }
 
     private void setDefaultItems() {
@@ -45,7 +45,7 @@ public class MatchIt extends Game {
                     pairItems.add(itemStack.clone());
             }
         } catch (UnsupportedEncodingException e2) {
-            gameBox.getLogger().warning("Failed to load default config file for: " + module.getModuleID());
+            gameBox.getLogger().warning("Failed to load default config file for: " + module.getGameId());
             e2.printStackTrace();
         }
     }
@@ -59,11 +59,9 @@ public class MatchIt extends Game {
         if (itemSection.isBoolean("glow")) {
             toReturn = nms.addGlow(toReturn);
         }
-        if (!GameBoxSettings.version1_8) {
-            ItemMeta meta = toReturn.getItemMeta();
-            meta.addItemFlags(ItemFlag.values());
-            toReturn.setItemMeta(meta);
-        }
+        ItemMeta meta = toReturn.getItemMeta();
+        meta.addItemFlags(ItemFlag.values());
+        toReturn.setItemMeta(meta);
         return toReturn;
     }
 
